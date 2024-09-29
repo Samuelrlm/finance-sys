@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./finance_manager
+      dockerfile: .docker/Dockerfile
+    volumes:
+      - ./finance_manager:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1

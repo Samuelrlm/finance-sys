@@ -1,0 +1,16 @@
+#ignore for django
+*.pyc
+.venv
+
+# Arquivos de configuração de IDEs/editores
+.vscode/
+.idea/
+*.swp
+
+# Diretórios de logs e bancos de dados locais
+*.sqlite3
+db.sqlite3
+
+# Arquivos de migrações do Django
+**/migrations/*
+!**/migrations/__init__.py
