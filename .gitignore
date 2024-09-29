@@ -1,6 +1,9 @@
 #ignore for django
 *.pyc
 .venv
+# Arquivos Python compilados
+*.pyo
+__pycache__/
 
 # Arquivos de configuração de IDEs/editores
 .vscode/
