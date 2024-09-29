@@ -1,243 +1,91 @@
----
 
-# API Documentation
+```markdown
+# 💰 Finance Manager Application
 
-## Base URL
-`http://localhost:8000/api/`
+### 🔍 Visão Geral
 
----
-
-## Endpoints
-
-### 1. **Clients**
-
-#### `GET /api/clients/`
-- **Description**: Retrieve a list of all clients.
-- **Response**:
-    ```json
-    [
-      {
-        "id": 1,
-        "name": "Maria Silva"
-      },
-      {
-        "id": 2,
-        "name": "João Santos"
-      }
-    ]
-    ```
-- **Status Codes**:
-    - 200 OK: Successfully retrieved.
-
-#### `GET /api/clients/<id>/`
-- **Description**: Retrieve a specific client by ID.
-- **Request Params**:
-  - `id` (integer): The unique ID of the client.
-- **Response**:
-    ```json
-    {
-      "id": 1,
-      "name": "Maria Silva"
-    }
-    ```
-- **Status Codes**:
-    - 200 OK: Successfully retrieved.
-    - 404 Not Found: Client not found.
+- **Frontend**: Desenvolvido com **React** e **TypeScript**, oferece uma interface amigável e responsiva para o gerenciamento de transações.
+  
+- **Backend**: Construído em **Django**, fornece uma API RESTful robusta para gerenciar filtros predefinidos, transações e clientes, com persistência de dados no **PostgreSQL**.
 
 ---
 
-### 2. **Simple Filters**
+## 🛠️ Tecnologias Utilizadas
 
-#### `GET /api/simple-filters/`
-- **Description**: Retrieve all simple filters.
-- **Response**:
-    ```json
-    [
-      {
-        "id": 1,
-        "name": "Filter 1",
-        "clients": ["Maria Silva"],
-        "start_date": "2023-01-01",
-        "end_date": "2023-03-31"
-      }
-    ]
-    ```
-- **Status Codes**:
-    - 200 OK: Successfully retrieved.
-
-#### `POST /api/simple-filters/`
-- **Description**: Create a new simple filter.
-- **Request Body**:
-    ```json
-    {
-      "name": "Filter 1",
-      "clients": ["Maria Silva"],
-      "start_date": "2023-01-01",
-      "end_date": "2023-03-31"
-    }
-    ```
-- **Response**:
-    ```json
-    {
-      "id": 1,
-      "name": "Filter 1",
-      "clients": ["Maria Silva"],
-      "start_date": "2023-01-01",
-      "end_date": "2023-03-31"
-    }
-    ```
-- **Status Codes**:
-    - 201 Created: Successfully created.
-    - 400 Bad Request: Validation error.
-
-#### `PUT /api/simple-filters/<id>/`
-- **Description**: Update a simple filter.
-- **Request Body**:
-    ```json
-    {
-      "name": "Updated Filter",
-      "clients": ["João Santos"],
-      "start_date": "2023-02-01",
-      "end_date": "2023-04-01"
-    }
-    ```
-- **Response**:
-    ```json
-    {
-      "id": 1,
-      "name": "Updated Filter",
-      "clients": ["João Santos"],
-      "start_date": "2023-02-01",
-      "end_date": "2023-04-01"
-    }
-    ```
-- **Status Codes**:
-    - 200 OK: Successfully updated.
-    - 404 Not Found: Filter not found.
-
-#### `DELETE /api/simple-filters/<id>/`
-- **Description**: Delete a simple filter.
-- **Response**:
-    - **Status Codes**:
-      - 204 No Content: Successfully deleted.
-      - 404 Not Found: Filter not found.
+### Frontend:
+- ⚛️ **React**
+- 📝 **TypeScript**
+- 🎨 **Styled-Components**
+- 🔗 **Axios** (para requisições HTTP)
+  
+### Backend:
+- 🐍 **Django**
+- 🗄️ **PostgreSQL**
+- 🐳 **Docker** (para containerização)
 
 ---
 
-### 3. **Comparison Filters**
+## 🚀 Executando o Projeto
 
-#### `GET /api/comparison-filters/`
-- **Description**: Retrieve all comparison filters.
-- **Response**:
-    ```json
-    [
-      {
-        "id": 1,
-        "filters": {
-          "filter-1": {
-            "clients": ["Maria Silva", "João Santos"],
-            "start_date": "2023-01-01",
-            "end_date": "2023-03-31"
-          },
-          "filter-2": {
-            "clients": ["Carlos Oliveira"],
-            "start_date": "2023-01-01",
-            "end_date": "2023-03-31"
-          }
-        }
-      }
-    ]
-    ```
-- **Status Codes**:
-    - 200 OK: Successfully retrieved.
+### 📋 Requisitos:
 
-#### `POST /api/comparison-filters/`
-- **Description**: Create a new comparison filter.
-- **Request Body**:
-    ```json
-    {
-      "filters": {
-        "filter-1": {
-          "clients": ["Maria Silva", "João Santos"],
-          "start_date": "2023-01-01",
-          "end_date": "2023-03-31"
-        },
-        "filter-2": {
-          "clients": ["Carlos Oliveira"],
-          "start_date": "2023-01-01",
-          "end_date": "2023-03-31"
-        }
-      }
-    }
-    ```
-- **Response**:
-    ```json
-    {
-      "id": 1,
-      "filters": {
-        "filter-1": {
-          "clients": ["Maria Silva", "João Santos"],
-          "start_date": "2023-01-01",
-          "end_date": "2023-03-31"
-        },
-        "filter-2": {
-          "clients": ["Carlos Oliveira"],
-          "start_date": "2023-01-01",
-          "end_date": "2023-03-31"
-        }
-      }
-    }
-    ```
-- **Status Codes**:
-    - 201 Created: Successfully created.
-    - 400 Bad Request: Validation error.
+- Docker e Docker Compose instalados
 
-#### `PUT /api/comparison-filters/<id>/`
-- **Description**: Update a comparison filter.
-- **Request Body**:
-    ```json
-    {
-      "filters": {
-        "filter-1": {
-          "clients": ["Updated Client"],
-          "start_date": "2023-02-01",
-          "end_date": "2023-04-01"
-        }
-      }
-    }
-    ```
-- **Response**:
-    ```json
-    {
-      "id": 1,
-      "filters": {
-        "filter-1": {
-          "clients": ["Updated Client"],
-          "start_date": "2023-02-01",
-          "end_date": "2023-04-01"
-        }
-      }
-    }
-    ```
-- **Status Codes**:
-    - 200 OK: Successfully updated.
-    - 404 Not Found: Filter not found.
+### Como Rodar:
 
-#### `DELETE /api/comparison-filters/<id>/`
-- **Description**: Delete a comparison filter.
-- **Response**:
-    - **Status Codes**:
-      - 204 No Content: Successfully deleted.
-      - 404 Not Found: Filter not found.
+1. **Clone o repositório**:
+   ```bash
+   git clone https://github.com/usuario/finance-manager.git
+   cd finance-manager
+   ```
+
+2. **Suba os containers (backend + banco de dados)**:
+   ```bash
+   docker-compose up --build
+   ```
+
+3. **Acesse o frontend**:
+   - 🌐 O frontend estará disponível em: `http://localhost:3000`
+
+4. **Acesse o backend**:
+   - 🛠️ A API estará disponível em: `http://localhost:8000`
 
 ---
 
-## Status Codes Summary
+## 📚 Documentação da API
 
-- **200 OK**: The request was successful.
-- **201 Created**: A new resource was successfully created.
-- **204 No Content**: The resource was successfully deleted.
-- **400 Bad Request**: The request could not be processed due to invalid input.
-- **404 Not Found**: The requested resource was not found.
+A API do **Finance Manager** oferece endpoints para a gestão de clientes, transações e filtros predefinidos. Você pode explorar a documentação completa clicando no botão abaixo:
+
+### ⚙️ Backend: API Finance Manager
+
+[![API Documentation](https://img.shields.io/badge/📄-API_Documentation-blue?style=for-the-badge)](./finance_manager/README.md)
 
 ---
+
+## 📂 Estrutura de Pastas
+
+```bash
+📦 finance-sys
+├── 📂 finance_manager (back-end)
+│   ├── 📁 finance_manager
+│   ├── 📁 pre_filters
+│   ├── 📁 clients
+│   ├── 📁 transactions
+│   └── ...
+├── 📂 frontend
+│   ├── 📁 src
+│   ├── 📁 components
+│   ├── 📁 styles
+│   └── ...
+└── 📄 README.md
+```
+
+---
+
+## 📝 Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
+
+---
+
+Made with ❤️ by Samuel Ribeiro
