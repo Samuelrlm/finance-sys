@@ -58,3 +58,42 @@ class TransactionDetailController:
             'date': transaction_data['date'],
             'client_data': client_data
         }
+
+class TransactionCompareController:
+    def __init__(self):
+        self.clients = get_clients()
+        self.transactions = get_transactions()
+
+    def compare_transactions(self, filters):
+        results = {}
+
+        for filter_name, criteria in filters.items():
+            client_ids = [client['id'] for client in self.clients if client['name'] in criteria.get('clients', [])]
+            filtered_transactions = []
+
+            for transaction in self.transactions:
+                transaction_date = datetime.fromisoformat(transaction['date'][:-1])
+                date_filter_passed = True
+
+                if criteria.get('start_date') and transaction_date < datetime.fromisoformat(criteria['start_date']):
+                    date_filter_passed = False
+                if criteria.get('end_date') and transaction_date > datetime.fromisoformat(criteria['end_date']):
+                    date_filter_passed = False
+
+                if date_filter_passed and (not client_ids or transaction['client_id'] in client_ids):
+                    client_name = next(
+                        (client['name'] for client in self.clients if client['id'] == transaction['client_id']),
+                        None
+                    )
+
+                    data = {
+                        'id': transaction['id'],
+                        'client_name': client_name,
+                        'amount': transaction['amount'],
+                        'date': transaction['date'],
+                    }
+                    filtered_transactions.append(data)
+
+            results[f"{filter_name}_results"] = filtered_transactions
+
+        return results

@@ -49,7 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'transactions.middlewares.ValidateClientsMiddleware'
+    'transactions.middlewares.ValidateClientsMiddleware',
+    'transactions.middlewares.ValidateTransactionCompareMiddleware'
 ]
 
 ROOT_URLCONF = 'finance_manager.urls'
