@@ -1,5 +1,3 @@
----
-
 # API Documentation
 
 ## Base URL
