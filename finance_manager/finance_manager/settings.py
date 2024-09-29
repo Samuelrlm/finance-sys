@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'transactions',
     'pre_filters',
+    'clients',
 ]
 
 MIDDLEWARE = [
