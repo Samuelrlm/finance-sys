@@ -7,7 +7,7 @@ from .controllers import TransactionController, TransactionDetailController, Tra
 
 class TransactionFilterView(View):
     @csrf_exempt
-    def get(self, request):
+    def post(self, request):
         controller = TransactionController()
 
         try:
