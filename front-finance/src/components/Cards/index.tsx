@@ -1,36 +1,15 @@
-import { useEffect, useState } from "react";
 import { CardsContainer, Card } from "./styles";
 
-interface Transaction {
-    amount: number;
+interface DataProps {
+    data: {
+        total: number;
+        valueTotal: number;
+        mediaValue: number;
+    };
 }
 
-export default function Cards({transactions} : {transactions: Transaction[]}) {
-    const [data, setData] = useState({
-        total: 0,
-        valueTotal: 0,
-        mediaValue: 0
-    })
-
-    useEffect(() => {
-        let valueTotal = 0
-        let mediaValue = 0
-
-        transactions.forEach((transaction: Transaction) => {
-            valueTotal += transaction.amount
-        })
-
-        if (transactions.length > 0) {
-            mediaValue = valueTotal / transactions.length
-        }
-
-        setData({
-            total: transactions.length,
-            valueTotal,
-            mediaValue: mediaValue
-        })
-    } , [transactions])
-
+export default function Cards({ data }: DataProps) {
+    
     return (
         <CardsContainer>
             <Card
@@ -50,7 +29,7 @@ export default function Cards({transactions} : {transactions: Transaction[]}) {
             >
                 <p>Montante total</p>
                 <div>
-                    <b>R$ {data.valueTotal}</b>
+                    <b>R$ {data.valueTotal.toFixed(2)}</b>
                 </div>
             </Card>
             <Card
@@ -60,7 +39,7 @@ export default function Cards({transactions} : {transactions: Transaction[]}) {
             >
                 <p>Montante médio</p>
                 <div>
-                    <b>{data.mediaValue}</b>
+                    <b>R$ {data.mediaValue.toFixed(2)}</b>
                 </div>
             </Card>
         </CardsContainer>
