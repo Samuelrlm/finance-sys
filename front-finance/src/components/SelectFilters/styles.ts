@@ -70,19 +70,12 @@ export const ContainerOptions = styled.div`
         &:hover{
             background-color: #F0F0F0FF;
         }
-        .chekcbox{
-            width: 20%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
         .content{
             width: 100%;
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: absolute;
         }
     }
 `

@@ -3,6 +3,7 @@ import instance from "../../api/instance"
 import Cards from "../../components/Cards"
 import { useEffect, useState } from "react"
 import ContentField from "./components/ContentField"
+import SelectFilters from "../../components/SelectFilters"
 
 interface Transaction {
     value: number;
@@ -16,6 +17,11 @@ export default function Home() {
         valueTotal: 0,
         mediaValue: 0
     })
+    const [filteredDate, setFilteredDate] = useState({
+        start: "",
+        end: ""
+    })
+    const [filteredClients, setFilteredClients] = useState([])
    
     useEffect(() => {
         const body = {
@@ -54,11 +60,26 @@ export default function Home() {
 
     return (
         <PageWrapper>
-            <Cards data={data}/>
+            <div style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "20px"
+            }}>
+                <Cards data={data}/>
+                <SelectFilters
+                    type="simples"
+                    setFilteredDate={setFilteredDate}
+                    setFilteredClients={setFilteredClients}
+                />
+            </div>
             <ContentField
                 setData={setData}
                 transactions={transactions}
                 setTransactions={setTransactions}
+                filteredDate={filteredDate}
+                setFilteredDate={setFilteredDate}
+                filteredClients={filteredClients}
+                setFilteredClients={setFilteredClients}
             />
         </PageWrapper>
     )

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Container } from "./styles";
 import instance from "../../../../api/instance";
 import { toast } from "react-toastify";
@@ -14,19 +13,23 @@ interface Transaction {
     [key: string]: string | number | boolean;
 }
 
+interface Client {
+    id: number;
+    name: string;
+}
+
 interface ContentFieldProps {
     setData: (data: { total: number; valueTotal: number; mediaValue: number }) => void;
     transactions: Transaction[];
     setTransactions: (transactions: Transaction[]) => void;
+    filteredDate: { start: string; end: string };
+    setFilteredDate: (filteredDate: { start: string; end: string }) => void;
+    filteredClients: Client[];
+    setFilteredClients: (filteredClients: Client[]) => void;
 }
 
-export default function ContentField({setData, transactions, setTransactions}: ContentFieldProps) {
-    const [filteredClients, setFilteredClients] = useState([])
-    const [filteredDate, setFilteredDate] = useState({
-        start: "",
-        end: ""
-    })
-
+export default function ContentField({setData, transactions, setTransactions, filteredDate, setFilteredDate, filteredClients, setFilteredClients}: ContentFieldProps) {
+    
     function handleFilterClients() {
         const body = {
             clients: filteredClients.map((client: { name: string }) => client.name),
