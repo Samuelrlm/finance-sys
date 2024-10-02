@@ -27,21 +27,6 @@
 - **Status Codes**:
     - 200 OK: Successfully retrieved.
 
-#### `GET /api/clients/<id>/`
-- **Description**: Retrieve a specific client by ID.
-- **Request Params**:
-  - `id` (integer): The unique ID of the client.
-- **Response**:
-    ```json
-    {
-      "id": 1,
-      "name": "Maria Silva"
-    }
-    ```
-- **Status Codes**:
-    - 200 OK: Successfully retrieved.
-    - 404 Not Found: Client not found.
-
 ---
 
 ### 2. **Simple Filters**
