@@ -30,12 +30,14 @@ services:
     build:
       context: ./front-finance
       dockerfile: .docker/Dockerfile
-    ports:
-      - "5173:5173"
     volumes:
       - ./front-finance:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173" 
     command: npm run dev -- --host
     depends_on:
       - backend
+
 volumes:
   postgres_data:
