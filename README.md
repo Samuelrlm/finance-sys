@@ -45,7 +45,7 @@
    ```
 
 3. **Acesse o frontend**:
-   - 🌐 O frontend estará disponível em: `http://localhost:3000`
+   - 🌐 O frontend estará disponível em: `http://localhost:5173`
 
 4. **Acesse o backend**:
    - 🛠️ A API estará disponível em: `http://localhost:8000`
