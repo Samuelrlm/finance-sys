@@ -229,7 +229,7 @@ Aqui está uma documentação em Markdown para os controllers de transações qu
 
 ## 🔍 4. Filtro de Transações
 
-### Endpoint: `/api/transactions/filter`
+### Endpoint: `/api/transactions/filter?start_date=2023-01-01&end_date=2023-03-31`
 **Método**: `POST`
 
 Este endpoint permite filtrar transações por nome de clientes e intervalo de datas.
@@ -238,8 +238,6 @@ Este endpoint permite filtrar transações por nome de clientes e intervalo de d
 ```json
 {
   "client_names": ["Maria Silva", "João Santos"],
-  "start_date": "2023-01-01",
-  "end_date": "2023-03-31"
 }
 ```
 
