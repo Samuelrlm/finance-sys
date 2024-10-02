@@ -9,7 +9,7 @@
 
 ### 1. **Clients**
 
-#### `GET /api/clients/`
+#### `GET /api/clients`
 - **Description**: Retrieve a list of all clients.
 - **Response**:
     ```json
