@@ -42,7 +42,17 @@
 2. **Suba os containers (backend + banco de dados)**:
    ```bash
    docker-compose up -d --build
+   docker exec -it finance-sys-backend-1 bash
+   python manage.py migrate
+   python manage.py makemigrations
    ```
+2.1 **Ou suba as aplicações separadamente**
+  ```bash
+  Front: npm run dev
+  Back: python manage.py runserver
+  Back: python manage.py migrate
+  Back: python manage.py makemigrations
+  ```
 
 3. **Acesse o frontend**:
    - 🌐 O frontend estará disponível em: `http://localhost:5173`
