@@ -41,7 +41,7 @@
 
 2. **Suba os containers (backend + banco de dados)**:
    ```bash
-   docker-compose up --build
+   docker-compose up -d --build
    ```
 
 3. **Acesse o frontend**:
